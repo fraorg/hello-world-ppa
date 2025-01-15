@@ -34,9 +34,6 @@ jobs:
         with:
           ppa: ${{ env.PPA }}
 
-      - name: Print meson version
-        run: meson --version
-
       - name: Upload source package
         uses: fragoi/debsign-action@main
         with:
