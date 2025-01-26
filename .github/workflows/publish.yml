@@ -13,21 +13,21 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     env:
-      version: ${{ github.event.client_payload.version }}
+      VERSION: ${{ github.event.client_payload.version }}
     steps:
       - uses: fragoi/bash-actions@main
 
       - name: Download upstream source
         run: |
-          upver=$(debUpver $version)
+          upver=$(debUpver $VERSION)
           downloadTag fragoi/hello-world v${upver} \
             hello-world_${upver}.orig.tar.gz
           repackage hello-world_${upver}.orig.tar.gz
 
       - name: Download packaging info
         run: |
-          downloadTag fragoi/hello-world-deb v${version} \
-            hello-world_${version}.debian.tar.gz
+          downloadTag fragoi/hello-world-deb v${VERSION} \
+            hello-world_${VERSION}.debian.tar.gz
 
       - name: Build source package
         uses: fragoi/debuild-action@main
