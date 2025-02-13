@@ -22,7 +22,6 @@ jobs:
           upver=$(debUpver $VERSION)
           downloadTag fragoi/hello-world v${upver} \
             hello-world_${upver}.orig.tar.gz
-          repackage hello-world_${upver}.orig.tar.gz
 
       - name: Download packaging info
         run: |
